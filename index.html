@@ -62,8 +62,6 @@
       --text-dim: #64748b;
       --text-bright: #1e293b;
       --heading: #0f172a;
-      --code-bg: #f1f5f9;
-      --code-border: #cbd5e1;
       --glass-bg: rgba(255, 255, 255, 0.75);
       --glass-border: rgba(0, 0, 0, 0.08);
       --tooltip-bg: rgba(255, 255, 255, 0.96);
@@ -149,7 +147,8 @@
     }
 
     #theme-toggle .toggle-label {
-      transition: opacity 0.25s var(--ease-premium), transform 0.25s var(--ease-premium), width 0.25s var(--ease-premium);
+      max-width: 120px;
+      transition: opacity 0.3s var(--ease-premium), transform 0.3s var(--ease-premium), max-width 0.3s var(--ease-premium);
       white-space: nowrap;
     }
 
@@ -162,7 +161,7 @@
 
     body.sidebar-collapsed #theme-toggle .toggle-label {
       opacity: 0;
-      width: 0;
+      max-width: 0;
       overflow: hidden;
       transform: translateX(-6px);
     }
@@ -281,8 +280,20 @@
     #sidebar .sidebar-logo h1 span,
     #sidebar .sidebar-logo h1,
     #sidebar .nav-num,
-    #sidebar .nav-label {
-      transition: opacity 0.25s var(--ease-premium), transform 0.25s var(--ease-premium), width 0.25s var(--ease-premium);
+    #sidebar .nav-label,
+    #sidebar .nav-dot,
+    #sidebar .toggle-label {
+      transition: opacity 0.3s var(--ease-premium), transform 0.3s var(--ease-premium), max-width 0.3s var(--ease-premium);
+    }
+
+    #sidebar a,
+    #sidebar .sidebar-toggle,
+    #sidebar #theme-toggle {
+      transition: color 0.2s var(--ease-premium), transform 0.2s var(--ease-spring), gap 0.3s var(--ease-premium), padding 0.3s var(--ease-premium);
+    }
+
+    .sidebar-logo {
+      transition: padding 0.3s var(--ease-premium), gap 0.3s var(--ease-premium);
     }
 
     /* ---- Animated active indicator ---- */
@@ -422,6 +433,30 @@
       letter-spacing: 0;
     }
 
+    #sidebar .nav-label {
+      max-width: 180px;
+    }
+
+    #sidebar .nav-num {
+      max-width: 30px;
+    }
+
+    #sidebar .nav-section {
+      max-width: 200px;
+    }
+
+    #sidebar .sidebar-logo h1 {
+      max-width: 180px;
+    }
+
+    #sidebar .sidebar-logo h1 span {
+      max-width: 180px;
+    }
+
+    #sidebar .nav-dot {
+      max-width: 5px;
+    }
+
     .nav-section {
       padding: 8px 12px 4px;
       font-size: 9.5px;
@@ -443,7 +478,11 @@
       align-items: center;
       gap: 10px;
       cursor: pointer;
-      transition: background 0.25s var(--ease-premium), transform 0.2s var(--ease-spring), box-shadow 0.25s;
+      transition: background 0.25s var(--ease-premium), transform 0.2s var(--ease-spring), box-shadow 0.25s, gap 0.3s var(--ease-premium), padding 0.3s var(--ease-premium);
+    }
+
+    .sidebar-toggle .nav-label {
+      max-width: 120px;
     }
 
     .sidebar-toggle:hover {
@@ -465,10 +504,11 @@
     body.sidebar-collapsed #sidebar .nav-num,
     body.sidebar-collapsed #sidebar .nav-label,
     body.sidebar-collapsed #sidebar .sidebar-logo h1 span,
-    body.sidebar-collapsed #sidebar .nav-dot {
+    body.sidebar-collapsed #sidebar .nav-dot,
+    body.sidebar-collapsed #sidebar .toggle-label {
       opacity: 0;
       transform: translateX(-6px);
-      width: 0;
+      max-width: 0;
       overflow: hidden;
       white-space: nowrap;
     }
@@ -483,6 +523,13 @@
       justify-content: center;
       padding-inline: 0;
       gap: 0;
+    }
+
+    body.sidebar-collapsed #sidebar #theme-toggle {
+      justify-content: center;
+      padding-inline: 0;
+      gap: 0;
+      width: auto;
     }
 
     body.sidebar-collapsed #sidebar a::after {
@@ -659,9 +706,9 @@
     .section p { margin-bottom: 12px; color: var(--text); }
 
     pre, .code-block {
-      background: var(--code-bg);
-      border: 1px solid var(--code-border);
-      border-left: 3px solid var(--docker-blue-dim);
+      background: #0d111c;
+      border: 1px solid #2a3a5a;
+      border-left: 3px solid #0a8ab5;
       border-radius: 6px;
       padding: 16px 20px;
       margin: 14px 0;
@@ -893,8 +940,8 @@
     }
 
     .signal-flow {
-      background: var(--code-bg);
-      border: 1px solid var(--code-border);
+      background: #0d111c;
+      border: 1px solid #2a3a5a;
       border-radius: 6px;
       padding: 16px 20px;
       margin: 14px 0;
